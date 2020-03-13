@@ -1,0 +1,22 @@
+[package]
+name = "confondant"
+version = "0.1.0"
+authors = ["Akshay <nerdypepper@tuta.io>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+quote = "1.0"
+toml = "^0.5"
+
+[dependencies.serde]
+version = "1.0.103"
+features = ["derive"]
+
+[dependencies.syn]
+version = "1.0"
+features = ["full"]
+
+[lib]
+proc-macro = true

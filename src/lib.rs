@@ -1,57 +1,23 @@
-extern crate proc_macro;
-
 use std::path::{Path, PathBuf};
 
-use proc_macro::TokenStream;
-use quote::quote;
-use syn::{parse_macro_input, AttrStyle, Attribute, DeriveInput, Lit, Meta, MetaNameValue};
+pub use serde::{de::DeserializeOwned, Serialize};
+pub use directories::ProjectDirs;
+pub use toml;
+pub use serde_json;
+pub use serde_yaml;
 
-use serde::{de::DeserializeOwned, Serialize};
-
-trait Config<T>
-where
-    T: Serialize + DeserializeOwned + Default,
-{
-    fn load() -> Result<T, String>;
-    fn store() -> Result<(), String>;
+#[derive(Debug)]
+pub enum FondantError {
+    InvalidHomeDir,
+    ConfigParseError,
+    DirCreateErr(std::io::Error),
+    LoadError,
+    FileWriteError,
+    FileReadError,
+    FileOpenError,
 }
 
-fn is_outer_attribute(a: &Attribute) -> bool {
-    match a.style {
-        AttrStyle::Outer => true,
-        _ => false,
-    }
-}
-
-#[proc_macro_derive(Config, attributes(filename, filetype))]
-pub fn config_attribute(item: TokenStream) -> TokenStream {
-    let mut ast: DeriveInput = syn::parse(item).unwrap();
-
-    let mut filename: Option<PathBuf> = None;
-    let mut filetype: Option<PathBuf> = None;
-
-    for option in ast.attrs.into_iter() {
-        let option = option.parse_meta().unwrap();
-        match option {
-            Meta::NameValue(MetaNameValue {
-                ref path, ref lit, ..
-            }) if path.is_ident("filename") => {
-                if let Lit::Str(f) = lit {
-                    filename = Some(PathBuf::from(f.value()));
-                }
-            }
-            Meta::NameValue(MetaNameValue {
-                ref path, ref lit, ..
-            }) if path.is_ident("filetype") => {
-                if let Lit::Str(f) = lit {
-                    filetype = Some(PathBuf::from(f.value()));
-                }
-            }
-            _ => {}
-        }
-    }
-
-    println!("{:?} {:?}", filename, filetype);
-
-    TokenStream::new()
+pub trait Config: Serialize + DeserializeOwned + Default {
+    fn load() -> Result<Self, FondantError>;
+    fn store(&self) -> Result<(), FondantError>;
 }

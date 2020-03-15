@@ -67,7 +67,7 @@ fn gen_impl(ast: &DeriveInput, filename: String, filetype: String) -> TokenStrea
     let (ser, ser_fn) = map_ser(&filetype);
 
     let gen = quote! {
-        use ::confondant::{ ProjectDirs, toml, serde_json, serde_yaml, FondantError };
+        use ::fondant::{ ProjectDirs, toml, serde_json, serde_yaml, FondantError };
         use ::std::path::{ Path, PathBuf };
         use ::std::option::Option;
         use ::std::fs::{self, File, OpenOptions};

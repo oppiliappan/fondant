@@ -1,5 +1,5 @@
 [package]
-name = "confondant_derive"
+name = "fondant_derive"
 version = "0.1.0"
 authors = ["Akshay <nerdypepper@tuta.io>"]
 edition = "2018"

@@ -7,6 +7,7 @@ edition = "2018"
 [dependencies]
 proc-macro2 = "1.0.9"
 quote = "1.0"
+directories = "2.0"
 
 [dependencies.syn]
 version = "1.0"

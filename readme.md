@@ -38,3 +38,10 @@ with the defaults:
 #[config_file = "my_app_config.yaml"]
 #[config_file = "~/.app.conf.json"]
 ```
+
+### todo
+
+[] improve error from trait impl
+[] use `syn::Error` and `syn::Result` to report macro errors
+[] write docs
+[] bundle and publish to crates.io

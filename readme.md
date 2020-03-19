@@ -41,7 +41,7 @@ with the defaults:
 
 ### todo
 
-[] improve error from trait impl
-[] use `syn::Error` and `syn::Result` to report macro errors
-[] write docs
-[] bundle and publish to crates.io
+ - [ ] improve error from trait impl
+ - [ ] use `syn::Error` and `syn::Result` to report macro errors
+ - [ ] write docs
+ - [ ] bundle and publish to crates.io

@@ -1,0 +1,19 @@
+[package]
+name = "fondant_deps"
+version = "0.1.0"
+authors = ["Akshay <nerdypepper@tuta.io>"]
+edition = "2018"
+
+[dependencies]
+toml = "^0.5"
+serde_yaml = "0.8"
+serde_json = "1.0.48"
+directories = "2.0"
+
+[dependencies.serde]
+version = "1.0.103"
+features = ["derive"]
+
+[dependencies.syn]
+version = "1.0"
+features = ["full"]

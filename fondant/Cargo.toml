@@ -1,0 +1,9 @@
+[package]
+name = "fondant"
+version = "0.1.0"
+authors = ["Akshay <nerdypepper@tuta.io>"]
+edition = "2018"
+
+[dependencies]
+fondant_derive = {version = "0.1.0", path = "../fondant_derive"}
+fondant_deps = {version = "0.1.0", path = "../fondant_deps"}

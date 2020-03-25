@@ -1,3 +1,5 @@
+//! Please refer to the `fondant` crate for usage instructions
+
 extern crate proc_macro;
 
 use ::std::ffi::{OsStr, OsString};
@@ -90,7 +92,8 @@ fn gen_impl(ast: &DeriveInput, cfg_path: ConfigPath) -> TokenStream {
     let (ser, ser_fn) = pick_serializer(&filetype);
 
     let includes = quote! {
-        use ::fondant::*;
+        use ::fondant::fondant_exports::*;
+        use ::fondant::FondantError ;
         use ::std::option::Option;
         use ::std::fs::{self, File, OpenOptions};
         use ::std::io::prelude::*;

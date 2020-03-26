@@ -1,5 +1,8 @@
 # fondant
 
+[Architecture](#Architecture) · [Usage](#Usage) ·
+[Customization](#Customization) · [Todo](#Todo)
+
 `fondant` is a macro based library to take the boilerplate out of
 configuration handling. Most of `fondant` is based off the `confy` crate.
 
@@ -9,7 +12,19 @@ configuration handling. Most of `fondant` is based off the `confy` crate.
  - support for custom config paths
  - support for custom config file names
 
-### Sample usage
+### Architecture
+
+`fondant` is split into 3 separate crates:
+
+ - `fondant_deps`: external crates and utils that `fondant` requires
+ - `fondant_derive`: core macro definitions
+ - `fondant`: the user facing library that brings it all together
+
+This slightly strange architecture arose because of some
+limitations with proc-macro crates and strict cyclic
+dependencies in cargo. All you need is the `fondant` crate.
+
+### Usage
 
 ```rust
 // the struct has to derive Serialize, Deserialize and Default
@@ -104,7 +119,7 @@ name = 'Central Park Zoo'
 penguins = 4
 ```
 
-### todo
+### Todo
 
  - [ ] improve error from trait impl
  - [ ] use `syn::Error` and `syn::Result` to report macro errors

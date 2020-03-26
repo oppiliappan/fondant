@@ -1,0 +1,1 @@
+/home/np/code/rustuff/fondant_workspace/readme.md

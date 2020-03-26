@@ -2,6 +2,12 @@
 name = "fondant_derive"
 version = "0.1.0"
 authors = ["Akshay <nerdypepper@tuta.io>"]
+description = "Core macros of fondant"
+readme = "readme.md"
+repository = "https://github.com/nerdypepper/fondant"
+license = "MIT"
+keywords = ["cli", "configuration", "macro"]
+categories = ["command-line-utilities", "config"]
 edition = "2018"
 
 [dependencies]

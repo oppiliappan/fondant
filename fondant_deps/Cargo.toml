@@ -2,6 +2,12 @@
 name = "fondant_deps"
 version = "0.1.0"
 authors = ["Akshay <nerdypepper@tuta.io>"]
+description = "External dependencies to supplement fondant"
+readme = "readme.md"
+repository = "https://github.com/nerdypepper/fondant"
+license = "MIT"
+keywords = ["cli", "configuration", "macro"]
+categories = ["command-line-utilities", "config"]
 edition = "2018"
 
 [dependencies]

@@ -6,13 +6,12 @@
 
 `fondant` is a macro based library to take the boilerplate out of
 configuration handling. All you need to do is derive the
-`Configure` trait on your struct, and fondant will decide
+`Configure` trait on your struct, and `fondant` will decide
 where to store it and and how to do so safely.
 
 
-Most of `fondant` is based off the `confy` crate.
-
-`fondant` adds a couple of extra features:
+Most of `fondant` is based off the `confy` crate,
+with a couple of extra features:
 
  - support for json, yaml and toml
  - support for custom config paths
@@ -20,7 +19,7 @@ Most of `fondant` is based off the `confy` crate.
 
 ### Usage ([Full Documentation](https://docs.rs/fondant/))
 
-Drop this in your `Cargo.toml` to gets started:
+Drop this in your `Cargo.toml` to get started:
 
 ```
 [dependencies]

@@ -1,6 +1,6 @@
 [package]
 name = "fondant"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Akshay <nerdypepper@tuta.io>"]
 description = "Macro based library to take the boilerplate out of configuration handling"
 readme = "readme.md"
@@ -11,5 +11,5 @@ categories = ["command-line-utilities", "config"]
 edition = "2018"
 
 [dependencies]
-fondant_derive = {version = "0.1.0", path = "../fondant_derive"}
+fondant_derive = {version = "0.1.1", path = "../fondant_derive"}
 fondant_deps = {version = "0.1.0", path = "../fondant_deps"}

@@ -1,6 +1,6 @@
 [package]
 name = "fondant_derive"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Akshay <nerdypepper@tuta.io>"]
 description = "Core macros of fondant"
 readme = "readme.md"

@@ -127,7 +127,7 @@ fn gen_impl(ast: &DeriveInput, cfg_path: ConfigPath) -> TokenStream {
                 match File::open(&config_file) {
                     Ok(mut cfg) => {
                         let mut cfg_data = String::new();
-                        cfg.read_to_string(&mut cfg_data);
+                        cfg.read_to_string(&mut cfg_data).unwrap();
 
                         let config: #struct_ident = #ser::from_str(&cfg_data[..])
                             .map_err(|_| FondantError::ConfigParseError)?;
@@ -154,7 +154,7 @@ fn gen_impl(ast: &DeriveInput, cfg_path: ConfigPath) -> TokenStream {
                     .map_err(|_| FondantError::FileOpenError)?;
 
                 let s = #ser::#ser_fn(self).map_err(|_| FondantError::ConfigParseError)?;
-                f.write_all(s.as_bytes()).map_err(|_| FondantError::FileWriteError);
+                f.write_all(s.as_bytes()).map_err(|_| FondantError::FileWriteError)?;
                 Ok(())
             }
         }

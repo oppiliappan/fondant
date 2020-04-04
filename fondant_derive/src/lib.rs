@@ -124,7 +124,12 @@ fn gen_impl(ast: &DeriveInput, cfg_path: ConfigPath) -> TokenStream {
         impl Configure for #struct_ident {
             fn load() -> Result<#struct_ident, FondantError> {
                 #load_paths
-                match File::open(&config_file) {
+                Self::load_file(&config_file)
+            }
+
+            fn load_file(conf_file: &PathBuf) -> Result<#struct_ident, FondantError> {
+                #load_paths        
+                match File::open(&conf_file) {  // Note: conf_file is different than config_file from #load_paths
                     Ok(mut cfg) => {
                         let mut cfg_data = String::new();
                         cfg.read_to_string(&mut cfg_data).unwrap();
@@ -146,11 +151,17 @@ fn gen_impl(ast: &DeriveInput, cfg_path: ConfigPath) -> TokenStream {
             }
             fn store(&self) -> Result<(), FondantError> {
                 #load_paths
+                &self.store_file(&config_file)?;
+                Ok(())
+            }
+
+            fn store_file(&self, conf_file: &PathBuf) -> Result<(), FondantError> {
+                #load_paths
                 let mut f = OpenOptions::new()
                     .write(true)
                     .create(true)
                     .truncate(true)
-                    .open(config_file)
+                    .open(conf_file)  // Note: conf_file is different than config_file from #load_paths
                     .map_err(|_| FondantError::FileOpenError)?;
 
                 let s = #ser::#ser_fn(self).map_err(|_| FondantError::ConfigParseError)?;

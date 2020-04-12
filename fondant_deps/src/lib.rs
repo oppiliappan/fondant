@@ -21,7 +21,7 @@ pub mod fondant_exports {
 }
 
 use serde::{de::DeserializeOwned, Serialize};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 #[derive(Debug)]
 /// Errors that `load` and `store` can result in
@@ -44,9 +44,8 @@ pub enum FondantError {
 
 /// Derive this trait on a struct to mark it as a 'configuration' struct.
 pub trait Configure: Serialize + DeserializeOwned + Default {
-    fn load_file(config_file: &PathBuf) -> Result<Self, FondantError>;
+    fn load_file<P: AsRef<Path>>(config_file: P) -> Result<Self, FondantError>;
     fn load() -> Result<Self, FondantError>;
     fn store(&self) -> Result<(), FondantError>;
-    fn store_file(&self, config_file: &PathBuf) -> Result<(), FondantError>;
-
+    fn store_file<P: AsRef<Path>>(&self, config_file: P) -> Result<(), FondantError>;
 }

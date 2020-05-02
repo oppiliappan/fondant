@@ -21,7 +21,9 @@ pub mod fondant_exports {
 }
 
 use serde::{de::DeserializeOwned, Serialize};
-use std::path::{Path, PathBuf};
+use std::error::Error;
+use std::fmt;
+use std::path::Path;
 
 #[derive(Debug)]
 /// Errors that `load` and `store` can result in
@@ -41,6 +43,32 @@ pub enum FondantError {
     FileReadError,
     FileOpenError,
 }
+
+impl fmt::Display for FondantError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let suggestion_text =
+            "HELP: You might have insufficient permissions to perform this action.";
+        match self {
+            FondantError::InvalidHomeDir => write!(f, "Failed to find home directory!"),
+            FondantError::ConfigParseError => write!(f, "Invalid configuration file!"),
+            FondantError::DirCreateErr(_) => {
+                write!(f, "Failed to write to configuration directory!")
+            }
+            FondantError::LoadError => write!(f, "Failed to load configuration file!"),
+            FondantError::FileWriteError => {
+                write!(f, "Failed to write configuration file! {}", suggestion_text)
+            }
+            FondantError::FileReadError => {
+                write!(f, "Failed to read configuration file! {}", suggestion_text)
+            }
+            FondantError::FileOpenError => {
+                write!(f, "Failed to open configuration file! {}", suggestion_text)
+            }
+        }
+    }
+}
+
+impl Error for FondantError {}
 
 /// Derive this trait on a struct to mark it as a 'configuration' struct.
 pub trait Configure: Serialize + DeserializeOwned + Default {

@@ -1,6 +1,6 @@
 [package]
 name = "fondant_deps"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Akshay <nerdypepper@tuta.io>"]
 description = "External dependencies to supplement fondant"
 readme = "readme.md"

@@ -12,4 +12,4 @@ edition = "2018"
 
 [dependencies]
 fondant_derive = {version = "0.1.1", path = "../fondant_derive"}
-fondant_deps = {version = "0.1.0", path = "../fondant_deps"}
+fondant_deps = {version = "0.1.1", path = "../fondant_deps"}

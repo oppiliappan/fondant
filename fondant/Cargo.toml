@@ -1,6 +1,6 @@
 [package]
 name = "fondant"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Akshay <nerdypepper@tuta.io>"]
 description = "Macro based library to take the boilerplate out of configuration handling"
 readme = "readme.md"

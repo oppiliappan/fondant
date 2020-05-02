@@ -70,8 +70,9 @@ dependencies in cargo. All you need is the `fondant` crate.
 
 ### Todo
 
- - [ ] improve error types
+ - [x] improve error types
  - [ ] use `syn::Error` and `syn::Result` to report macro errors
  - [x] write docs
+ - [ ] write test suite
  - [x] bundle and publish to crates.io
 
